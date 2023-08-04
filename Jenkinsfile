@@ -11,25 +11,25 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/Bravinsimiyu/jenkins-kubernetes-deployment.git'
+        git 'https://github.com/MuntahaZafar/jenkins-kubernetes-deployment.git'
       }
     }
 
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+          dockerImage = docker.build jenkins-kubernetes-deployment
         }
       }
     }
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhub-credentials'
+               registryCredential = 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment'
            }
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry( 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment', registryCredential ) {
             dockerImage.push("latest")
           }
         }
