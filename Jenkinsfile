@@ -18,6 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
+          sh "docker -v"
           dockerImage = docker.build jenkins-kubernetes-deployment
         }
       }
