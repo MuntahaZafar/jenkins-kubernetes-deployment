@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "MuntahaZafar/react-app"
+    dockerimagename = "muntahazafar/jenkins-kubernetes-deployment"
     dockerImage = ""
   }
 
@@ -19,7 +19,8 @@ pipeline {
       steps{
         script {
           sh "docker -v"
-          dockerImage = docker.build jenkins-kubernetes-deployment
+          sh "docker build -f $WORKSPACE/Dockerfile -t muntahazafar/jenkins-kubernetes-deployment." 
+          sh 'docker tag muntahazafar/jenkins-kubernetes-deployment'
         }
       }
     }
