@@ -19,8 +19,8 @@ pipeline {
       steps{
         script {
           sh "docker -v"
-          sh "docker build -f $WORKSPACE/Dockerfile -t jenkins-kubernetes-deployment ." 
-          sh 'docker tag jenkins-kubernetes-deployment muntahazafar/jenkins-kubernetes-deployment'
+          sh "sudo docker build -f $WORKSPACE/Dockerfile -t jenkins-kubernetes-deployment ." 
+          sh 'sudo docker tag jenkins-kubernetes-deployment muntahazafar/jenkins-kubernetes-deployment'
         }
       }
     }
