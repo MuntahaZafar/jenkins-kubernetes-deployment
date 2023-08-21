@@ -35,8 +35,9 @@ pipeline {
         script {
              //docker.withRegistry( 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment', registryCredential ) {
             //dockerImage.push("latest")
-          sh 'docker login $DOCKERHUB_CREDENTIALS'
-            sh 'docker push muntahazafar/jenkins-kubernetes-deployment:latest'
+          sh 'docker login $DOCKERHUB_CREDENTIALS --password-stdin'
+          echo 'Login Completed'
+          sh 'docker push muntahazafar/jenkins-kubernetes-deployment:latest'
           }
         }
       }
