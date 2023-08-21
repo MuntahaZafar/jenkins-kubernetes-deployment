@@ -28,7 +28,7 @@ pipeline {
     stage('Pushing Image') {
       environment {
               //sh 'docker login $dockerhublogin'
-              'docker login muntahazafar foo Geoinformatics123'
+              'docker login -u muntahazafar -p Geoinformatics123'
                registryCredential = 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment'
            }
       steps{
