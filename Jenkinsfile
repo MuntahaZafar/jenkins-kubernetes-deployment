@@ -39,7 +39,7 @@ pipeline {
           }
         }
       }
-    }
+    
 
     stage('Deploying React.js container to Kubernetes') {
       steps {
