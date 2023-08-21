@@ -28,14 +28,14 @@ pipeline {
     stage('Pushing Image') {
       environment {
               //sh 'docker login $dockerhublogin'
-              
+              DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')
                registryCredential = 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment'
            }
       steps{
         script {
              //docker.withRegistry( 'https://hub.docker.com/repository/docker/muntahazafar/jenkins-kubernetes-deployment', registryCredential ) {
             //dockerImage.push("latest")
-          sh 'docker login -u muntahazafar -p Geoinformatics123'
+          sh 'docker login $DOCKERHUB_CREDENTIALS'
             sh 'docker push muntahazafar/jenkins-kubernetes-deployment:latest'
           }
         }
